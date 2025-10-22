@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Креативный сайт Стаса</title>
+    <style>
+        /* Разноцветная цветовая схема */
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffd166;
+            --dark: #1a535c;
+            --light: #f7fff7;
+            --purple: #9b5de5;
+            --orange: #f3722c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--primary), var(--purple));
+            color: white;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary), var(--orange));
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px var(--accent); }
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: rgba(255,255,255,0.95);
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--purple));
+        }
+
+        h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 2em;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--orange));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 8px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .special-button {
+            background: linear-gradient(135deg, var(--purple), var(--secondary));
+        }
+
+        .rainbow-button {
+            background: linear-gradient(135deg, #ff6b6b, #ffd166, #4ecdc4, #9b5de5);
+            animation: rainbow 3s ease-in-out infinite;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        input, textarea {
+            border: 3px solid var(--secondary);
+            padding: 12px;
+            border-radius: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.9);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 10px rgba(155, 93, 229, 0.3);
+            transform: scale(1.02);
+        }
+
+        footer {
+            background: linear-gradient(90deg, var(--dark), #2a9d8f);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
+        }
+
+        .service {
+            background: linear-gradient(135deg, rgba(255, 214, 102, 0.2), rgba(78, 205, 196, 0.2));
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service:nth-child(even) {
+            border-left-color: var(--secondary);
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(155, 93, 229, 0.2));
+        }
+
+        #statusText {
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(255, 214, 102, 0.3), rgba(78, 205, 196, 0.3));
+        }
+
+        .counter-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .achievement {
+            background: linear-gradient(135deg, #ffd166, #ff9e6d);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            main {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <h1 class="floating">🎉 Добро пожаловать на сайт Стаса! 🎊</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="home">🏠 Главная</a></li>
+                <li><a href="#" data-page="about">🌟 О нас</a></li>
+                <li><a href="#" data-page="contact">📞 Контакты</a></li>
+                <li><a href="#" data-page="games">🎮 Игры</a></li>
+            </ul>
+        </nav>
+        <button id="themeToggle" class="rainbow-button">🌈 Сменить магию!</button>
+    </header>
+
+    <main>
+        <section id="home-section">
+            <h2>🚀 Главная страница</h2>
+            <p id="welcome-text" class="gradient-text">Добро пожаловать в удивительный мир креатива и технологий!</p>
+
+            <div class="counter-display">
+                <p id="click-counter">🎯 Количество нажатий: 0</p>
+            </div>
+
+            <button id="clickMe" class="special-button">✨ Нажми для магии!</button>
+            <button id="persistentButton" class="rainbow-button">🎪 Нажми меня!</button>
+            <button id="resetButton">🔄 Сбросить всё</button>
+
+            <div id="statusText" class="counter-display">📊 Статус: готов к приключениям!</div>
+
+            <div class="achievement" id="achievement">🎉 Достижение разблокировано!</div>
+        </section>
+
+        <section id="about-section" style="display: none;">
+            <h2>🎨 О нашей команде</h2>
+            <p class="gradient-text">Мы создаем невероятные вещи, которые вдохновляют!</p>
+
+            <div class="service floating">
+                <h3>💻 Веб-разработка</h3>
+                <p>Создаем современные, интерактивные сайты с душой</p>
+            </div>
+            <div class="service floating">
+                <h3>🎨 Креативный дизайн</h3>
+                <p>Разрабатываем красивые и функциональные интерфейсы</p>
+            </div>
+            <div class="service floating">
+                <h3>⚡ Анимации и интерактив</h3>
+                <p>Оживляем ваши идеи с помощью современных технологий</p>
+            </div>
+        </section>
+
+        <section id="contact-section" style="display: none;">
+            <h2>📞 Свяжитесь с нами</h2>
+            <form id="contact-form">
+                <div style="margin: 15px 0;">
+                    <label for="name" style="font-weight: bold;">👤 Имя:</label>
+                    <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                </div>
+                <div style="margin: 15px 0;">
+                    <label for="email" style="font-weight: bold;">📧 Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div style="margin: 15px 0;">
+                    <label for="message" style="font-weight: bold;">💬 Сообщение:</label>
+                    <textarea id="message" name="message" required rows="5" placeholder="Расскажите нам о вашем проекте..."></textarea>
+                </div>
+                <button type="submit" class="special-button">🚀 Отправить сообщение</button>
+            </form>
+            <div id="form-message" style="margin-top: 20px; font-weight: bold;"></div>
+        </section>
+
+        <section id="games-section" style="display: none;">
+            <h2>🎮 Игровая зона</h2>
+            <p>Отдохните и поиграйте!</p>
+
+            <button id="colorGame" class="rainbow-button">🎨 Случайный цвет</button>
+            <button id="animationGame" class="special-button">✨ Запустить анимацию</button>
+            <button id="soundGame">🔊 Играть звук</button>
+
+            <div id="gameArea" style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #4ecdc4, #9b5de5); border-radius: 15px; color: white; text-align: center;">
+                <p>Игровая площадка будет здесь!</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>🎪 Динамический контент</h2>
+            <p>Создавайте и управляйте элементами в реальном времени!</p>
+
+            <div id="dynamic-content" style="min-height: 100px; border: 2px dashed var(--secondary); border-radius: 15px; padding: 20px; margin: 15px 0;">
+                <!-- Сюда будем добавлять элементы через JavaScript -->
+            </div>
+
+            <button id="add-item" class="special-button">➕ Добавить волшебный элемент</button>
+            <button id="remove-item">➖ Удалить элемент</button>
+            <button id="clear-all">🗑️ Очистить всё</button>
+        </section>
+    </main>
+
+    <footer>
+        <p style="font-size: 1.1em;">&copy; <span id="current-year">2024</span> 🎊 Креативный сайт Стаса. Все права защищены! 🎉</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Сделано с ❤️ и магией кода</p>
+    </footer>
+
+    <script>
+        // Создаем частицы для фона
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.background = getRandomColor();
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffd166', '#9b5de5', '#f3722c'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Устанавливаем текущий год
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Система подсчета кликов с улучшениями
+        let clicks = parseInt(localStorage.getItem('clickCount')) || 0;
+        let totalClicks = 0;
+
+        function updateStatus() {
+            const statusText = document.getElementById('statusText');
+            const achievement = document.getElementById('achievement');
+
+            statusText.textContent = `🎯 Всего кликов: ${clicks}`;
+
+            if (clicks >= 5) {
+                statusText.innerHTML = "🎉 5 кликов! Вы на правильном пути!";
+                showAchievement("Новичок кликера!");
+            }
+            if (clicks >= 10) {
+                statusText.innerHTML = "🔥 10 кликов! Вы становитесь профессионалом!";
+                showAchievement("Опытный кликер!");
+            }
+            if (clicks >= 20) {
+                statusText.innerHTML = "🚀 20 кликов! Вы мастер кликов!";
+                showAchievement("Мастер кликов!");
+            }
+        }
+
+        function showAchievement(text) {
+            const achievement = document.getElementById('achievement');
+            achievement.textContent = text;
+            achievement.style.display = 'block';
+            setTimeout(() => {
+                achievement.style.display = 'none';
+            }, 3000);
+        }
+
+        // Основные обработчики событий
+        document.getElementById('persistentButton').addEventListener('click', function() {
+            clicks++;
+            totalClicks++;
+            localStorage.setItem('clickCount', clicks);
+            updateStatus();
+            animateButton(this);
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            clicks = 0;
+            totalClicks = 0;
+            localStorage.setItem('clickCount', clicks);
+            updateStatus();
+            animateButton(this);
+        });
+
+        // Анимация кнопки
+        function animateButton(button) {
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 150);
+        }
+
+        // Навигация между страницами
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('main section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                document.getElementById(targetPage + '-section').style.display = 'block';
+                animateButton(this);
+            });
+        });
+
+        // Обработчик для кнопки "Нажми для магии!"
+        let clickCount = 0;
+        document.getElementById('clickMe').addEventListener('click', function() {
+            clickCount++;
+            totalClicks++;
+            document.getElementById('click-counter').textContent = `🎯 Количество нажатий: ${clickCount}`;
+
+            if (clickCount === 5) {
+                document.getElementById('click-counter').innerHTML = "🎉 5 нажатий! Магия начинается!";
+            } else if (clickCount === 10) {
+                document.getElementById('click-counter').innerHTML = "🔥 10 нажатий! Вы творите чудеса!";
+            } else if (clickCount === 15) {
+                document.getElementById('click-counter').innerHTML = "🚀 15 нажатий! Вы волшебник!";
+            }
+
+            animateButton(this);
+        });
+
+        // Динамическое добавление элементов
+        let elementCounter = 1;
+        document.getElementById('add-item').addEventListener('click', function() {
+            const dynamicContent = document.getElementById('dynamic-content');
+            const newItem = document.createElement('div');
+            newItem.className = 'service floating';
+            newItem.innerHTML = `
+                <h3>🎊 Волшебный элемент ${elementCounter}</h3>
+                <p>Этот элемент был создан в ${new Date().toLocaleTimeString()}</p>
+                <button onclick="this.parentElement.remove()" class="special-button">Удалить</button>
+            `;
+            dynamicContent.appendChild(newItem);
+            elementCounter++;
+            animateButton(this);
+        });
+
+        document.getElementById('remove-item').addEventListener('click', function() {
+            const dynamicContent = document.getElementById('dynamic-content');
+            if (dynamicContent.lastChild) {
+                dynamicContent.removeChild(dynamicContent.lastChild);
+                elementCounter = Math.max(1, elementCounter - 1);
+            }
+            animateButton(this);
+        });
+
+        document.getElementById('clear-all').addEventListener('click', function() {
+            document.getElementById('dynamic-content').innerHTML = '';
+            elementCounter = 1;
+            animateButton(this);
+        });
+
+        // Игровые функции
+        document.getElementById('colorGame').addEventListener('click', function() {
+            document.body.style.background = `linear-gradient(135deg, ${getRandomColor()}, ${getRandomColor()})`;
+            animateButton(this);
+        });
+
+        document.getElementById('animationGame').addEventListener('click', function() {
+            const elements = document.querySelectorAll('.service, button');
+            elements.forEach(el => {
+                el.style.animation = 'float 1s ease-in-out';
+                setTimeout(() => {
+                    el.style.animation = '';
+                }, 1000);
+            });
+            animateButton(this);
+        });
+
+        // Обработчик формы
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            formMessage.innerHTML = "🎉 Сообщение отправлено! Скоро свяжемся с вами!";
+            formMessage.style.color = "#4ecdc4";
+            this.reset();
+        });
+
+        // Смена темы/магии
+        let magicMode = false;
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            magicMode = !magicMode;
+            if (magicMode) {
+                document.body.style.filter = 'hue-rotate(180deg)';
+                this.textContent = '✨ Вернуть обычный режим';
+            } else {
+                document.body.style.filter = '';
+                this.textContent = '🌈 Включить магический режим';
+            }
+            animateButton(this);
+        });
+
+        // Инициализация
+        createParticles();
+        updateStatus();
+
+        // Показываем случайный факт при загрузке
+        const facts = [
+            "💡 Знаете ли вы: этот сайт использует современные технологии веб-разработки!",
+            "🎨 Интересный факт: все цвета подобраны для наилучшего восприятия",
+            "⚡ Секрет: нажмите на кнопку 'магии' для сюрприза!",
+            "🌟 Факт: анимации делают сайт более живым и интересным"
+        ];
+
+        setTimeout(() => {
+            document.getElementById('welcome-text').textContent = facts[Math.floor(Math.random() * facts.length)];
+        }, 2000);
+    </script>
+</body>
+
+</html>
